@@ -1,3 +1,3 @@
 # Aplicatie-inchiriere-utilaje-constructie
 
-Aplicatie stabila C# pentru inchirierea utilajelor de constructie.
+Aplicatie C# pentru inchirierea utilajelor de constructie.
