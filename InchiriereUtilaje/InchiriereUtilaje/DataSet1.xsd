@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="InchiriereUtilajeConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="InchiriereUtilajeConnectionString (Settings)" PropertyReference="ApplicationSettings.InchiriereUtilaje.Properties.Settings.GlobalReference.Default.InchiriereUtilajeConnectionString" Provider="System.Data.OleDb" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConturiConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConturiConnectionString (Settings)" PropertyReference="ApplicationSettings.InchiriereUtilaje.Properties.Settings.GlobalReference.Default.ConturiConnectionString" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="InchirieriTableAdapter" GeneratorDataComponentClassName="InchirieriTableAdapter" Name="Inchirieri" UserDataComponentName="InchirieriTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InchiriereUtilajeConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        SUM(InchirieriContinut.TarifZi * InchirieriContinut.NrZile) AS Total, Inchirieri.IdInchiriere, Inchirieri.DataImprumut, Inchirieri.IdSocietate, Inchirieri.NrInchiriere, SocietatiComerciale.DenumireSocietate
+FROM            ((Inchirieri LEFT OUTER JOIN
+                         InchirieriContinut ON Inchirieri.IdInchiriere = InchirieriContinut.IdInchiriere) LEFT OUTER JOIN
+                         SocietatiComerciale ON Inchirieri.IdSocietate = SocietatiComerciale.IdSocietate)
+GROUP BY Inchirieri.IdInchiriere, Inchirieri.DataImprumut, Inchirieri.IdSocietate, Inchirieri.NrInchiriere, SocietatiComerciale.DenumireSocietate</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IdInchiriere" DataSetColumn="IdInchiriere" />
+              <Mapping SourceColumn="DataImprumut" DataSetColumn="DataImprumut" />
+              <Mapping SourceColumn="IdSocietate" DataSetColumn="IdSocietate" />
+              <Mapping SourceColumn="NrInchiriere" DataSetColumn="NrInchiriere" />
+              <Mapping SourceColumn="Total" DataSetColumn="Total" />
+              <Mapping SourceColumn="DenumireSocietate" DataSetColumn="DenumireSocietate" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="InchirieriContinutTableAdapter" GeneratorDataComponentClassName="InchirieriContinutTableAdapter" Name="InchirieriContinut" UserDataComponentName="InchirieriContinutTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InchiriereUtilajeConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Utilaje.DenumireUtilaj, InchirieriContinut.IdInchiriere, InchirieriContinut.NrCrt, InchirieriContinut.IdUtilaj, InchirieriContinut.NrZile, Utilaje.TarifZi, InchirieriContinut.NrZile * Utilaje.TarifZi AS Valoare
+FROM            (InchirieriContinut INNER JOIN
+                         Utilaje ON InchirieriContinut.IdUtilaj = Utilaje.IdUtilaj)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IdInchiriere" DataSetColumn="IdInchiriere" />
+              <Mapping SourceColumn="NrCrt" DataSetColumn="NrCrt" />
+              <Mapping SourceColumn="IdUtilaj" DataSetColumn="IdUtilaj" />
+              <Mapping SourceColumn="NrZile" DataSetColumn="NrZile" />
+              <Mapping SourceColumn="TarifZi" DataSetColumn="TarifZi" />
+              <Mapping SourceColumn="DenumireUtilaj" DataSetColumn="DenumireUtilaj" />
+              <Mapping SourceColumn="Valoare" DataSetColumn="Valoare" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SocietatiComercialeTableAdapter" GeneratorDataComponentClassName="SocietatiComercialeTableAdapter" Name="SocietatiComerciale" UserDataComponentName="SocietatiComercialeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InchiriereUtilajeConnectionString (Settings)" DbObjectName="SocietatiComerciale" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM `SocietatiComerciale` WHERE ((`IdSocietate` = ?) AND ((? = 1 AND `DenumireSocietate` IS NULL) OR (`DenumireSocietate` = ?)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_IdSocietate" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="IdSocietate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_DenumireSocietate" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="DenumireSocietate" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_DenumireSocietate" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="DenumireSocietate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO `SocietatiComerciale` (`DenumireSocietate`) VALUES (?)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="DenumireSocietate" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="DenumireSocietate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        IdSocietate, DenumireSocietate
+FROM            SocietatiComerciale</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE `SocietatiComerciale` SET `DenumireSocietate` = ? WHERE ((`IdSocietate` = ?) AND ((? = 1 AND `DenumireSocietate` IS NULL) OR (`DenumireSocietate` = ?)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="DenumireSocietate" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="DenumireSocietate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_IdSocietate" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="IdSocietate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_DenumireSocietate" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="DenumireSocietate" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_DenumireSocietate" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="DenumireSocietate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IdSocietate" DataSetColumn="IdSocietate" />
+              <Mapping SourceColumn="DenumireSocietate" DataSetColumn="DenumireSocietate" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="UtilajeTableAdapter" GeneratorDataComponentClassName="UtilajeTableAdapter" Name="Utilaje" UserDataComponentName="UtilajeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="InchiriereUtilajeConnectionString (Settings)" DbObjectName="Utilaje" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM `Utilaje` WHERE ((`IdUtilaj` = ?) AND ((? = 1 AND `DenumireUtilaj` IS NULL) OR (`DenumireUtilaj` = ?)) AND ((? = 1 AND `TarifZi` IS NULL) OR (`TarifZi` = ?)) AND ((? = 1 AND `SpImagine` IS NULL) OR (`SpImagine` = ?)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_IdUtilaj" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="IdUtilaj" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_DenumireUtilaj" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="DenumireUtilaj" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_DenumireUtilaj" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="DenumireUtilaj" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_TarifZi" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="TarifZi" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="Original_TarifZi" Precision="0" ProviderType="Currency" Scale="0" Size="0" SourceColumn="TarifZi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_SpImagine" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="SpImagine" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_SpImagine" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="SpImagine" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO `Utilaje` (`DenumireUtilaj`, `TarifZi`, `SpImagine`) VALUES (?, ?, ?)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="DenumireUtilaj" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="DenumireUtilaj" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="TarifZi" Precision="0" ProviderType="Currency" Scale="0" Size="0" SourceColumn="TarifZi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="SpImagine" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="SpImagine" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        IdUtilaj, DenumireUtilaj, TarifZi, SpImagine
+FROM            Utilaje</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE `Utilaje` SET `DenumireUtilaj` = ?, `TarifZi` = ?, `SpImagine` = ? WHERE ((`IdUtilaj` = ?) AND ((? = 1 AND `DenumireUtilaj` IS NULL) OR (`DenumireUtilaj` = ?)) AND ((? = 1 AND `TarifZi` IS NULL) OR (`TarifZi` = ?)) AND ((? = 1 AND `SpImagine` IS NULL) OR (`SpImagine` = ?)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="DenumireUtilaj" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="DenumireUtilaj" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="TarifZi" Precision="0" ProviderType="Currency" Scale="0" Size="0" SourceColumn="TarifZi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="SpImagine" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="SpImagine" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_IdUtilaj" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="IdUtilaj" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_DenumireUtilaj" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="DenumireUtilaj" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_DenumireUtilaj" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="DenumireUtilaj" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_TarifZi" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="TarifZi" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Currency" Direction="Input" ParameterName="Original_TarifZi" Precision="0" ProviderType="Currency" Scale="0" Size="0" SourceColumn="TarifZi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_SpImagine" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="SpImagine" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_SpImagine" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="SpImagine" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IdUtilaj" DataSetColumn="IdUtilaj" />
+              <Mapping SourceColumn="DenumireUtilaj" DataSetColumn="DenumireUtilaj" />
+              <Mapping SourceColumn="TarifZi" DataSetColumn="TarifZi" />
+              <Mapping SourceColumn="SpImagine" DataSetColumn="SpImagine" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="userparolaTableAdapter" GeneratorDataComponentClassName="userparolaTableAdapter" Name="userparola" UserDataComponentName="userparolaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConturiConnectionString (Settings)" DbObjectName="userparola" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM `userparola` WHERE ((`IdCont` = ?) AND ((? = 1 AND `NumeCont` IS NULL) OR (`NumeCont` = ?)) AND ((? = 1 AND `Username` IS NULL) OR (`Username` = ?)) AND ((? = 1 AND `Parola` IS NULL) OR (`Parola` = ?)) AND ((? = 1 AND `ClasaUser` IS NULL) OR (`ClasaUser` = ?)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_IdCont" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="IdCont" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_NumeCont" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="NumeCont" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_NumeCont" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NumeCont" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_Username" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Username" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_Username" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="Username" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_Parola" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Parola" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_Parola" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="Parola" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_ClasaUser" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="ClasaUser" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_ClasaUser" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="ClasaUser" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO `userparola` (`NumeCont`, `Username`, `Parola`, `ClasaUser`) VALUES (?, ?, ?, ?)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="NumeCont" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NumeCont" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Username" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="Username" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Parola" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="Parola" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="ClasaUser" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="ClasaUser" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        IdCont, NumeCont, Username, Parola, ClasaUser
+FROM            userparola</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE `userparola` SET `NumeCont` = ?, `Username` = ?, `Parola` = ?, `ClasaUser` = ? WHERE ((`IdCont` = ?) AND ((? = 1 AND `NumeCont` IS NULL) OR (`NumeCont` = ?)) AND ((? = 1 AND `Username` IS NULL) OR (`Username` = ?)) AND ((? = 1 AND `Parola` IS NULL) OR (`Parola` = ?)) AND ((? = 1 AND `ClasaUser` IS NULL) OR (`ClasaUser` = ?)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="NumeCont" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NumeCont" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Username" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="Username" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Parola" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="Parola" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="ClasaUser" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="ClasaUser" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="Original_IdCont" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="IdCont" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_NumeCont" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="NumeCont" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_NumeCont" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="NumeCont" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_Username" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Username" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_Username" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="Username" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_Parola" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="Parola" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_Parola" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="Parola" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="IsNull_ClasaUser" Precision="0" ProviderType="Integer" Scale="0" Size="0" SourceColumn="ClasaUser" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="Original_ClasaUser" Precision="0" ProviderType="VarWChar" Scale="0" Size="0" SourceColumn="ClasaUser" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IdCont" DataSetColumn="IdCont" />
+              <Mapping SourceColumn="NumeCont" DataSetColumn="NumeCont" />
+              <Mapping SourceColumn="Username" DataSetColumn="Username" />
+              <Mapping SourceColumn="Parola" DataSetColumn="Parola" />
+              <Mapping SourceColumn="ClasaUser" DataSetColumn="ClasaUser" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Inchirieri" msprop:Generator_TableClassName="InchirieriDataTable" msprop:Generator_TableVarName="tableInchirieri" msprop:Generator_RowChangedName="InchirieriRowChanged" msprop:Generator_TablePropName="Inchirieri" msprop:Generator_RowDeletingName="InchirieriRowDeleting" msprop:Generator_RowChangingName="InchirieriRowChanging" msprop:Generator_RowEvHandlerName="InchirieriRowChangeEventHandler" msprop:Generator_RowDeletedName="InchirieriRowDeleted" msprop:Generator_RowClassName="InchirieriRow" msprop:Generator_UserTableName="Inchirieri" msprop:Generator_RowEvArgName="InchirieriRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdInchiriere" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdInchiriere" msprop:Generator_ColumnPropNameInRow="IdInchiriere" msprop:Generator_ColumnPropNameInTable="IdInchiriereColumn" msprop:Generator_UserColumnName="IdInchiriere" type="xs:int" minOccurs="0" />
+              <xs:element name="DataImprumut" msprop:Generator_ColumnVarNameInTable="columnDataImprumut" msprop:Generator_ColumnPropNameInRow="DataImprumut" msprop:Generator_ColumnPropNameInTable="DataImprumutColumn" msprop:Generator_UserColumnName="DataImprumut" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IdSocietate" msprop:Generator_ColumnVarNameInTable="columnIdSocietate" msprop:Generator_ColumnPropNameInRow="IdSocietate" msprop:Generator_ColumnPropNameInTable="IdSocietateColumn" msprop:Generator_UserColumnName="IdSocietate" type="xs:int" minOccurs="0" />
+              <xs:element name="NrInchiriere" msprop:Generator_ColumnVarNameInTable="columnNrInchiriere" msprop:Generator_ColumnPropNameInRow="NrInchiriere" msprop:Generator_ColumnPropNameInTable="NrInchiriereColumn" msprop:Generator_UserColumnName="NrInchiriere" type="xs:int" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DenumireSocietate" msprop:Generator_ColumnVarNameInTable="columnDenumireSocietate" msprop:Generator_ColumnPropNameInRow="DenumireSocietate" msprop:Generator_ColumnPropNameInTable="DenumireSocietateColumn" msprop:Generator_UserColumnName="DenumireSocietate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="InchirieriContinut" msprop:Generator_TableClassName="InchirieriContinutDataTable" msprop:Generator_TableVarName="tableInchirieriContinut" msprop:Generator_RowChangedName="InchirieriContinutRowChanged" msprop:Generator_TablePropName="InchirieriContinut" msprop:Generator_RowDeletingName="InchirieriContinutRowDeleting" msprop:Generator_RowChangingName="InchirieriContinutRowChanging" msprop:Generator_RowEvHandlerName="InchirieriContinutRowChangeEventHandler" msprop:Generator_RowDeletedName="InchirieriContinutRowDeleted" msprop:Generator_RowClassName="InchirieriContinutRow" msprop:Generator_UserTableName="InchirieriContinut" msprop:Generator_RowEvArgName="InchirieriContinutRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdInchiriere" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdInchiriere" msprop:Generator_ColumnPropNameInRow="IdInchiriere" msprop:Generator_ColumnPropNameInTable="IdInchiriereColumn" msprop:Generator_UserColumnName="IdInchiriere" type="xs:int" minOccurs="0" />
+              <xs:element name="NrCrt" msprop:Generator_ColumnVarNameInTable="columnNrCrt" msprop:Generator_ColumnPropNameInRow="NrCrt" msprop:Generator_ColumnPropNameInTable="NrCrtColumn" msprop:Generator_UserColumnName="NrCrt" type="xs:int" minOccurs="0" />
+              <xs:element name="IdUtilaj" msprop:Generator_ColumnVarNameInTable="columnIdUtilaj" msprop:Generator_ColumnPropNameInRow="IdUtilaj" msprop:Generator_ColumnPropNameInTable="IdUtilajColumn" msprop:Generator_UserColumnName="IdUtilaj" type="xs:int" minOccurs="0" />
+              <xs:element name="NrZile" msprop:Generator_ColumnVarNameInTable="columnNrZile" msprop:Generator_ColumnPropNameInRow="NrZile" msprop:Generator_ColumnPropNameInTable="NrZileColumn" msprop:Generator_UserColumnName="NrZile" type="xs:int" minOccurs="0" />
+              <xs:element name="TarifZi" msprop:Generator_ColumnVarNameInTable="columnTarifZi" msprop:Generator_ColumnPropNameInRow="TarifZi" msprop:Generator_ColumnPropNameInTable="TarifZiColumn" msprop:Generator_UserColumnName="TarifZi" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DenumireUtilaj" msprop:Generator_ColumnVarNameInTable="columnDenumireUtilaj" msprop:Generator_ColumnPropNameInRow="DenumireUtilaj" msprop:Generator_ColumnPropNameInTable="DenumireUtilajColumn" msprop:Generator_UserColumnName="DenumireUtilaj" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Valoare" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnValoare" msprop:Generator_ColumnPropNameInRow="Valoare" msprop:Generator_ColumnPropNameInTable="ValoareColumn" msprop:Generator_UserColumnName="Valoare" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SocietatiComerciale" msprop:Generator_TableClassName="SocietatiComercialeDataTable" msprop:Generator_TableVarName="tableSocietatiComerciale" msprop:Generator_RowChangedName="SocietatiComercialeRowChanged" msprop:Generator_TablePropName="SocietatiComerciale" msprop:Generator_RowDeletingName="SocietatiComercialeRowDeleting" msprop:Generator_RowChangingName="SocietatiComercialeRowChanging" msprop:Generator_RowEvHandlerName="SocietatiComercialeRowChangeEventHandler" msprop:Generator_RowDeletedName="SocietatiComercialeRowDeleted" msprop:Generator_RowClassName="SocietatiComercialeRow" msprop:Generator_UserTableName="SocietatiComerciale" msprop:Generator_RowEvArgName="SocietatiComercialeRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdSocietate" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdSocietate" msprop:Generator_ColumnPropNameInRow="IdSocietate" msprop:Generator_ColumnPropNameInTable="IdSocietateColumn" msprop:Generator_UserColumnName="IdSocietate" type="xs:int" />
+              <xs:element name="DenumireSocietate" msprop:Generator_ColumnVarNameInTable="columnDenumireSocietate" msprop:Generator_ColumnPropNameInRow="DenumireSocietate" msprop:Generator_ColumnPropNameInTable="DenumireSocietateColumn" msprop:Generator_UserColumnName="DenumireSocietate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Utilaje" msprop:Generator_TableClassName="UtilajeDataTable" msprop:Generator_TableVarName="tableUtilaje" msprop:Generator_RowChangedName="UtilajeRowChanged" msprop:Generator_TablePropName="Utilaje" msprop:Generator_RowDeletingName="UtilajeRowDeleting" msprop:Generator_RowChangingName="UtilajeRowChanging" msprop:Generator_RowEvHandlerName="UtilajeRowChangeEventHandler" msprop:Generator_RowDeletedName="UtilajeRowDeleted" msprop:Generator_RowClassName="UtilajeRow" msprop:Generator_UserTableName="Utilaje" msprop:Generator_RowEvArgName="UtilajeRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdUtilaj" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdUtilaj" msprop:Generator_ColumnPropNameInRow="IdUtilaj" msprop:Generator_ColumnPropNameInTable="IdUtilajColumn" msprop:Generator_UserColumnName="IdUtilaj" type="xs:int" />
+              <xs:element name="DenumireUtilaj" msprop:Generator_ColumnVarNameInTable="columnDenumireUtilaj" msprop:Generator_ColumnPropNameInRow="DenumireUtilaj" msprop:Generator_ColumnPropNameInTable="DenumireUtilajColumn" msprop:Generator_UserColumnName="DenumireUtilaj" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TarifZi" msprop:Generator_ColumnVarNameInTable="columnTarifZi" msprop:Generator_ColumnPropNameInRow="TarifZi" msprop:Generator_ColumnPropNameInTable="TarifZiColumn" msprop:Generator_UserColumnName="TarifZi" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SpImagine" msprop:Generator_ColumnVarNameInTable="columnSpImagine" msprop:Generator_ColumnPropNameInRow="SpImagine" msprop:Generator_ColumnPropNameInTable="SpImagineColumn" msprop:Generator_UserColumnName="SpImagine" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="InchiriereContinutManevra" msprop:Generator_TableClassName="InchiriereContinutManevraDataTable" msprop:Generator_TableVarName="tableInchiriereContinutManevra" msprop:Generator_RowChangedName="InchiriereContinutManevraRowChanged" msprop:Generator_TablePropName="InchiriereContinutManevra" msprop:Generator_RowDeletingName="InchiriereContinutManevraRowDeleting" msprop:Generator_RowChangingName="InchiriereContinutManevraRowChanging" msprop:Generator_RowEvHandlerName="InchiriereContinutManevraRowChangeEventHandler" msprop:Generator_RowDeletedName="InchiriereContinutManevraRowDeleted" msprop:Generator_RowClassName="InchiriereContinutManevraRow" msprop:Generator_UserTableName="InchiriereContinutManevra" msprop:Generator_RowEvArgName="InchiriereContinutManevraRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NrCrt" msprop:Generator_ColumnVarNameInTable="columnNrCrt" msprop:Generator_ColumnPropNameInRow="NrCrt" msprop:Generator_ColumnPropNameInTable="NrCrtColumn" msprop:Generator_UserColumnName="NrCrt" type="xs:short" minOccurs="0" />
+              <xs:element name="DenumireUtilaj" msprop:Generator_ColumnVarNameInTable="columnDenumireUtilaj" msprop:Generator_ColumnPropNameInRow="DenumireUtilaj" msprop:Generator_ColumnPropNameInTable="DenumireUtilajColumn" msprop:Generator_UserColumnName="DenumireUtilaj" type="xs:string" minOccurs="0" />
+              <xs:element name="NrZile" msprop:Generator_ColumnVarNameInTable="columnNrZile" msprop:Generator_ColumnPropNameInRow="NrZile" msprop:Generator_ColumnPropNameInTable="NrZileColumn" msprop:Generator_UserColumnName="NrZile" type="xs:int" minOccurs="0" />
+              <xs:element name="TarifZi" msprop:Generator_ColumnVarNameInTable="columnTarifZi" msprop:Generator_ColumnPropNameInRow="TarifZi" msprop:Generator_ColumnPropNameInTable="TarifZiColumn" msprop:Generator_UserColumnName="TarifZi" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Valoare" msdata:ReadOnly="true" msdata:Expression="TarifZi*NrZile" msprop:Generator_ColumnVarNameInTable="columnValoare" msprop:Generator_ColumnPropNameInRow="Valoare" msprop:Generator_ColumnPropNameInTable="ValoareColumn" msprop:Generator_UserColumnName="Valoare" type="xs:decimal" minOccurs="0" />
+              <xs:element name="IdUtilaj" msprop:Generator_ColumnVarNameInTable="columnIdUtilaj" msprop:Generator_ColumnPropNameInRow="IdUtilaj" msprop:Generator_ColumnPropNameInTable="IdUtilajColumn" msprop:Generator_UserColumnName="IdUtilaj" type="xs:int" minOccurs="0" />
+              <xs:element name="SpImagine" msprop:Generator_ColumnVarNameInTable="columnSpImagine" msprop:Generator_ColumnPropNameInRow="SpImagine" msprop:Generator_ColumnPropNameInTable="SpImagineColumn" msprop:Generator_UserColumnName="SpImagine" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="userparola" msprop:Generator_TableClassName="userparolaDataTable" msprop:Generator_TableVarName="tableuserparola" msprop:Generator_RowChangedName="userparolaRowChanged" msprop:Generator_TablePropName="userparola" msprop:Generator_RowDeletingName="userparolaRowDeleting" msprop:Generator_RowChangingName="userparolaRowChanging" msprop:Generator_RowEvHandlerName="userparolaRowChangeEventHandler" msprop:Generator_RowDeletedName="userparolaRowDeleted" msprop:Generator_RowClassName="userparolaRow" msprop:Generator_UserTableName="userparola" msprop:Generator_RowEvArgName="userparolaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdCont" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdCont" msprop:Generator_ColumnPropNameInRow="IdCont" msprop:Generator_ColumnPropNameInTable="IdContColumn" msprop:Generator_UserColumnName="IdCont" type="xs:int" />
+              <xs:element name="NumeCont" msprop:Generator_ColumnVarNameInTable="columnNumeCont" msprop:Generator_ColumnPropNameInRow="NumeCont" msprop:Generator_ColumnPropNameInTable="NumeContColumn" msprop:Generator_UserColumnName="NumeCont" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Username" msprop:Generator_ColumnVarNameInTable="columnUsername" msprop:Generator_ColumnPropNameInRow="Username" msprop:Generator_ColumnPropNameInTable="UsernameColumn" msprop:Generator_UserColumnName="Username" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Parola" msprop:Generator_ColumnVarNameInTable="columnParola" msprop:Generator_ColumnPropNameInRow="Parola" msprop:Generator_ColumnPropNameInTable="ParolaColumn" msprop:Generator_UserColumnName="Parola" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ClasaUser" msprop:Generator_ColumnVarNameInTable="columnClasaUser" msprop:Generator_ColumnPropNameInRow="ClasaUser" msprop:Generator_ColumnPropNameInTable="ClasaUserColumn" msprop:Generator_UserColumnName="ClasaUser" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:userparola" />
+      <xs:field xpath="mstns:IdCont" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

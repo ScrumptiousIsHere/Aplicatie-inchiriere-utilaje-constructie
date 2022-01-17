@@ -1,0 +1,15 @@
+E:\Facultate\Anul_3\Tehnici Avansate de Programare\Proiect utilaje\InchiriereUtilaje\InchiriereUtilaje\bin\Debug\InchiriereUtilaje.exe.config
+E:\Facultate\Anul_3\Tehnici Avansate de Programare\Proiect utilaje\InchiriereUtilaje\InchiriereUtilaje\obj\Debug\InchiriereUtilaje.FInchirieri.resources
+E:\Facultate\Anul_3\Tehnici Avansate de Programare\Proiect utilaje\InchiriereUtilaje\InchiriereUtilaje\obj\Debug\InchiriereUtilaje.Properties.Resources.resources
+E:\Facultate\Anul_3\Tehnici Avansate de Programare\Proiect utilaje\InchiriereUtilaje\InchiriereUtilaje\obj\Debug\InchiriereUtilaje.csproj.GenerateResource.Cache
+E:\Facultate\Anul_3\Tehnici Avansate de Programare\Proiect utilaje\InchiriereUtilaje\InchiriereUtilaje\bin\Debug\InchiriereUtilaje.exe
+E:\Facultate\Anul_3\Tehnici Avansate de Programare\Proiect utilaje\InchiriereUtilaje\InchiriereUtilaje\bin\Debug\InchiriereUtilaje.pdb
+E:\Facultate\Anul_3\Tehnici Avansate de Programare\Proiect utilaje\InchiriereUtilaje\InchiriereUtilaje\obj\Debug\InchiriereUtilaje.exe
+E:\Facultate\Anul_3\Tehnici Avansate de Programare\Proiect utilaje\InchiriereUtilaje\InchiriereUtilaje\obj\Debug\InchiriereUtilaje.pdb
+E:\Facultate\Anul_3\Tehnici Avansate de Programare\Proiect utilaje\InchiriereUtilaje\InchiriereUtilaje\obj\Debug\InchiriereUtilaje.Form1.resources
+E:\Facultate\Anul_3\Tehnici Avansate de Programare\Proiect utilaje\InchiriereUtilaje\InchiriereUtilaje\obj\Debug\InchiriereUtilaje.Form3.resources
+E:\Facultate\Anul_3\Tehnici Avansate de Programare\Proiect utilaje\InchiriereUtilaje\InchiriereUtilaje\obj\Debug\InchiriereUtilaje.FFurnizori.resources
+E:\Facultate\Anul_3\Tehnici Avansate de Programare\Proiect utilaje\InchiriereUtilaje\InchiriereUtilaje\obj\Debug\InchiriereUtilaje.FUtilaje.resources
+E:\Facultate\Anul_3\Tehnici Avansate de Programare\Proiect utilaje\InchiriereUtilaje\InchiriereUtilaje\obj\Debug\InchiriereUtilaje.FInchiriereNoua.resources
+E:\Facultate\Anul_3\Tehnici Avansate de Programare\Proiect utilaje\InchiriereUtilaje\InchiriereUtilaje\obj\Debug\InchiriereUtilaje.csprojAssemblyReference.cache
+E:\Facultate\Anul_3\Tehnici Avansate de Programare\Proiect utilaje\InchiriereUtilaje\InchiriereUtilaje\obj\Debug\InchiriereUtilaje.csproj.CoreCompileInputs.cache
